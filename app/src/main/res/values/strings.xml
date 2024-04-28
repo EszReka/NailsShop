@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Shop</string>
+    <string name="username">Felhasználó név</string>
+    <string name="password">Jelszó</string>
+    <string name="loginBTN">Bejelentkezés</string>
+    <string name="registerBTN">Regisztrálj!</string>
+    <string name="email">aTeEmail@Címed.hu</string>
+    <string name="puttocartBTN">Kosárba</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="items_name">
+        <item>UV lámpa</item>
+        <item>Matrica</item>
+        <item>Piros géllakk</item>
+        <item>Kék géllak</item>
+        <item>Reszelő</item>
+        <item>Csiszológép</item>
+        <item>Vékony ecset</item>
+        <item>Vastag ecset</item>
+        <item>Fedőlakk</item>
+        <item>Alaplakk</item>
+        <item>Bőrolaj</item>
+    </string-array>
+
+    <string-array name="items_price">
+        <item>12 520 FT</item>
+        <item>830 FT</item>
+        <item>1 930 Ft</item>
+        <item>1 850 Ft</item>
+        <item>980 FT</item>
+        <item>29 150 FT</item>
+        <item>2 740 FT</item>
+        <item>4 780 FT</item>
+        <item>1 860 FT</item>
+        <item>1 550 FT</item>
+        <item>1 580 FT</item>
+    </string-array>
+
+    <string-array name="items_description">
+        <item>Három oldalon zárt, két dupla 9W csöves, körben tükrös, népszerű formájú, strapabíró lámpa. </item>
+        <item>Készíts 3D hatású, különleges mintákat pillanatok alatt 3D effect matricáinkkal!</item>
+        <item>Krémes, jól fedő, tartós piros színű géllakk. Extra tartós, de fixálni kell!</item>
+        <item>Krémes, jól fedő, tartós kék színű géllakk. Lágyan, finoman terül.</item>
+        <item>Rozsdamentes acél anyagának köszönhetően munkabírása, élettartama és fertőtleníthetősége kiemelkedő.</item>
+        <item>Elegáns megjelenés, magas minőség, megbízhatóság.</item>
+        <item>Speciális műszőrből készült díszítő ecset, főként a minták tökéletes és gyors árnyékolásához fejlesztve.</item>
+        <item>Vastagon, ívesen végződő, természetes szőrből készült ecset.</item>
+        <item>UV fényre kötő összetevőket is tartalmazó kemény lakkvédő pajzs.</item>
+        <item>Körömerősítő alapozólakk, magas kálciummal és vitamin tartalmommal.</item>
+        <item>Mandula illatú vitaminos bőrolaj. </item>
+    </string-array>
+
+    <array name="items_picture">
+        <item>@drawable/uv_lamp</item>
+        <item>@drawable/matrica</item>
+        <item>@drawable/red</item>
+        <item>@drawable/blue</item>
+        <item>@drawable/file</item>
+        <item>@drawable/csiszolo_gep</item>
+        <item>@drawable/small_brush</item>
+        <item>@drawable/thick_brush</item>
+        <item>@drawable/top_coat</item>
+        <item>@drawable/base_coat</item>
+        <item>@drawable/olaj</item>
+    </array>
+
+</resources>
