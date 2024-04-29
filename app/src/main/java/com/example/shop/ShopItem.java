@@ -7,12 +7,14 @@ public class ShopItem {
     private String productPrice;
     private String productDetails;
     private int ImageSource;
+    private boolean onsale;
 
-    public ShopItem(String productName, String productPrice, String productDetails, int imageSource) {
+    public ShopItem(String productName, String productPrice, String productDetails, int imageSource, boolean onsale) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDetails = productDetails;
-        ImageSource = imageSource;
+        this.ImageSource = imageSource;
+        this.onsale = onsale;
     }
     public ShopItem(){}
 
@@ -36,5 +38,17 @@ public class ShopItem {
     }
     public int getImageSource() {
         return ImageSource;
+    }
+
+    public void setImageSource(int imageSource) {
+        ImageSource = imageSource;
+    }
+
+    public boolean isOnsale() {
+        return onsale;
+    }
+
+    public void setOnsale(boolean onsale) {
+        this.onsale = onsale;
     }
 }

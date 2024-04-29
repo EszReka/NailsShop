@@ -4,12 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShopFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_purple">
+        <SearchView
+            android:id="@+id/SearchView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:queryHint="Keresés"
+            android:background="@android:color/holo_purple" />
+
+        <!-- LinearLayout containing buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Buttons -->
+            <Button
+                android:id="@+id/abc_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="ABC▼" />
+
+            <Button
+                android:id="@+id/price_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="AKCIÓ" />
+        </LinearLayout>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/homeRecyclerView"
         android:padding="16dp"
-        android:layout_marginTop="60dp"/>
-
+        android:layout_marginTop="50dp"/>
 
 </FrameLayout>

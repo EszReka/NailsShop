@@ -42,6 +42,11 @@ public class ShopItemAdapter extends RecyclerView.Adapter<ShopItemAdapter.ViewHo
         return shopItemsList.size();
     }
 
+    public void setFilteredList(ArrayList<ShopItem> filteredList) {
+        this.shopItemsList = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     public static  class ViewHolder extends RecyclerView.ViewHolder {
         private TextView productName;

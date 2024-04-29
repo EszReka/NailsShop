@@ -64,4 +64,32 @@
         <item>@drawable/olaj</item>
     </array>
 
+    <string-array name="Sitems_name">
+        <item>Savmentes primer</item>
+        <item>Glitter</item>
+        <item>Kéztámasz</item>
+        <item>Körömvágó olló</item>
+    </string-array>
+
+    <string-array name="Sitems_price">
+        <item>1 900 FT</item>
+        <item>650 FT</item>
+        <item>1 950 Ft</item>
+        <item>3 450 Ft</item>
+    </string-array>
+
+    <string-array name="Sitems_description">
+        <item>Eredeti ár: 2 850 Ft Teljesen savmentes, tapadás elősegítő folyadék, ami teljesen nem szárad meg, marad egy ragacsos rétege.</item>
+        <item>Eredeti ár: 860 Ft Ft Az aranylóan fénylő Gold, a csillámló Pink, a kékesen ragyogó Turqouise és ezüstös Silver elkápráztat mindenkit, aki megpillantja.</item>
+        <item>Eredeti ár: 2 980 Ft Frottír kéztámasz, bevarrt logóval, rózsaszín és fehér.</item>
+        <item>Eredeti ár: 5 480 Ft Rozsdamentes acél, vékony és ívelt hegy, hogy a legpontosabb formát érd el!</item>
+    </string-array>
+
+    <array name="Sitems_picture">
+        <item>@drawable/primer</item>
+        <item>@drawable/csillam</item>
+        <item>@drawable/parna</item>
+        <item>@drawable/ollo</item>
+    </array>
+
 </resources>
