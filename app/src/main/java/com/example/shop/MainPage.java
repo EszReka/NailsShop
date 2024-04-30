@@ -53,4 +53,10 @@ public class MainPage extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
 }
