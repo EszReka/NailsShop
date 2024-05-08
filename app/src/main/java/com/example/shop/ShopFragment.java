@@ -45,9 +45,7 @@ public class ShopFragment extends Fragment {
     private CollectionReference mItemsC;
     private SearchView searchView;
 
-    public ShopFragment() {
-        //musthave
-    }
+    public ShopFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,13 +54,18 @@ public class ShopFragment extends Fragment {
         itemObjList = new ArrayList<>();
         firestore = FirebaseFirestore.getInstance();
         mItemsC = firestore.collection("Items");
-        //generateShopItems();
-        //generateonSaleShopItems();
         searchView = rootView.findViewById(R.id.SearchView);
         searchView.clearFocus();
+
+        homeRecyclerView = rootView.findViewById(R.id.homeRecyclerView);
+        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        queryData();
+
+        shopItemAdapter = new ShopItemAdapter((ArrayList<ShopItem>) itemObjList);
+        homeRecyclerView.setAdapter(shopItemAdapter);
         rootView.findViewById(R.id.price_button).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               filterFirebase("onSale");
+                filterFirebase("onSale");
             }
         });
         rootView.findViewById(R.id.abc_button).setOnClickListener(new View.OnClickListener() {
@@ -70,9 +73,6 @@ public class ShopFragment extends Fragment {
                 filterFirebase("abc");
             }
         });
-        homeRecyclerView = rootView.findViewById(R.id.homeRecyclerView);
-        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        queryData();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -81,81 +81,86 @@ public class ShopFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-               filterList(newText);
+                filterList(newText);
                 return false;
             }
         });
-        shopItemAdapter = new ShopItemAdapter((ArrayList<ShopItem>) itemObjList);
-        homeRecyclerView.setAdapter(shopItemAdapter);
         return rootView;
     }
 
     private void filterList(String text) {
         ArrayList<ShopItem> filteredList = new ArrayList<>();
-        for (ShopItem item : itemObjList){
-            if(item.getProductName().toLowerCase().contains(text.toLowerCase())){
+        for (ShopItem item : itemObjList) {
+            if (item.getProductName().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
             }
         }
         if (!filteredList.isEmpty()) {
             shopItemAdapter.setFilteredList(filteredList);
-         }
+        }
     }
 
-    private void queryData(){
+    private void queryData() {
         itemObjList.clear();
         mItemsC.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot doc : task.getResult()){
-                        Log.d(LOG_KEY,doc.getId() + "=>" + doc.getData());
-                        ShopItem shopItem = doc.toObject(ShopItem.class);
-                        itemObjList.add(shopItem);
-                        Log.d(LOG_KEY,shopItem.getProductName() + "=>" + shopItem.getProductDetails());
+                if (task.isSuccessful()) {
+                    if (!task.getResult().isEmpty()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            //Log.d(LOG_KEY, doc.getId() + "=>" + doc.getData());
+                            ShopItem shopItem = doc.toObject(ShopItem.class);
+                            itemObjList.add(shopItem);
+                            //Log.d(LOG_KEY, shopItem.getProductName() + "=>" + shopItem.getProductDetails());
+                            shopItemAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        generateShopItems();
+                        generateonSaleShopItems();
+                        shopItemAdapter.notifyDataSetChanged();
+                        queryData();
                     }
-                }else {
+                } else {
                     Log.d(LOG_KEY, "Error getting document: ", task.getException());
                 }
-                shopItemAdapter.notifyDataSetChanged();
-            }
-        });
-}
-
-private void filterFirebase(String filterText){
-    if(filterText.equals("abc")){
-        itemObjList.clear();
-        mItemsC.orderBy("productName").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot doc : task.getResult()){
-                        ShopItem shopItem = doc.toObject(ShopItem.class);
-                        itemObjList.add(shopItem);
-                    }
-                }else {
-                    Log.d(LOG_KEY, "Error getting document: ", task.getException());
-                }
-                shopItemAdapter.notifyDataSetChanged();
-            }
-        });
-    }else if(filterText.equals("onSale")){
-        itemObjList.clear();
-        mItemsC.whereEqualTo("onsale", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot doc : task.getResult()){
-                        ShopItem shopItem = doc.toObject(ShopItem.class);
-                        itemObjList.add(shopItem);
-                    }
-                }else {
-                    Log.d(LOG_KEY, "Error getting document: ", task.getException());
-                }
-                shopItemAdapter.notifyDataSetChanged();
             }
         });
     }
+
+    private void filterFirebase(String filterText) {
+        if (filterText.equals("abc")) {
+            itemObjList.clear();
+            mItemsC.orderBy("productName").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            ShopItem shopItem = doc.toObject(ShopItem.class);
+                            itemObjList.add(shopItem);
+                        }
+                    } else {
+                        Log.d(LOG_KEY, "Error getting document: ", task.getException());
+                    }
+                    shopItemAdapter.notifyDataSetChanged();
+                }
+            });
+        } else if (filterText.equals("onSale")) {
+            itemObjList.clear();
+            mItemsC.whereEqualTo("onsale", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            ShopItem shopItem = doc.toObject(ShopItem.class);
+                            itemObjList.add(shopItem);
+                        }
+                    } else {
+                        Log.d(LOG_KEY, "Error getting document: ", task.getException());
+                    }
+                    shopItemAdapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
 
@@ -176,6 +181,7 @@ private void filterFirebase(String filterText){
             ));
         }
     }
+
     private void generateonSaleShopItems() {
         Log.e(LOG_KEY, "generateShopItems: generating shop items");
         String[] SitemList = getResources().getStringArray(R.array.Sitems_name);

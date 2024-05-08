@@ -1,18 +1,19 @@
 package com.example.shop;
 
+import com.google.firebase.firestore.auth.User;
+
 import java.util.ArrayList;
 
 public class UserData {
     private String email;
     private  String username;
-    private ArrayList<ShopItem> inCartList;
-    private int ProfilePictureSource;
+    private ArrayList<ShopItem> inCart;
 
-    public UserData(String email, String username, ArrayList<ShopItem> inCartList, int profilePictureSource) {
+    public UserData(){}
+    public UserData(String email, String username, ArrayList<ShopItem> inCart) {
         this.email = email;
         this.username = username;
-        this.inCartList = inCartList;
-        ProfilePictureSource = profilePictureSource;
+        this.inCart = inCart;
     }
 
     public String getEmail() {
@@ -31,19 +32,11 @@ public class UserData {
         this.username = username;
     }
 
-    public ArrayList<ShopItem> getInCartList() {
-        return inCartList;
+    public ArrayList<ShopItem> getInCart() {
+        return inCart;
     }
 
-    public void setInCartList(ArrayList<ShopItem> inCartList) {
-        this.inCartList = inCartList;
-    }
-
-    public int getProfilePictureSource() {
-        return ProfilePictureSource;
-    }
-
-    public void setProfilePictureSource(int profilePictureSource) {
-        ProfilePictureSource = profilePictureSource;
+    public void setInCart(ArrayList<ShopItem> inCart) {
+        this.inCart = inCart;
     }
 }
