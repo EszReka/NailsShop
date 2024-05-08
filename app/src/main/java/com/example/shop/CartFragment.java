@@ -47,8 +47,10 @@ public class CartFragment extends Fragment {
                         for (QueryDocumentSnapshot doc : task.getResult()) {
                             UserData userData = doc.toObject(UserData.class);
                             ArrayList<ShopItem> array = userData.getInCart();
-                            if(inCart != null){
+                            if(array != null){
                                 inCart = array;
+                                listView = (ListView) rootView.findViewById(R.id.inCartListView);
+                                ShopItemAdapter adapter = new ShopItemAdapter(inCart);
                             } else {
                                 inCart = new ArrayList<ShopItem>();
                             }
@@ -57,8 +59,6 @@ public class CartFragment extends Fragment {
                 }
             }
         });
-        listView = (ListView) rootView.findViewById(R.id.inCartListView);
-        ShopItemAdapter adapter = new ShopItemAdapter(inCart);
 
 
 
