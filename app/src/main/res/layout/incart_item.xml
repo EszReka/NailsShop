@@ -57,11 +57,11 @@
                 />
 
             <Button
-                android:id="@+id/put_to_cart"
+                android:id="@+id/delete_fromcart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
-                android:onClick="in_cart"
+                android:onClick="delete_from_Cart"
                 android:backgroundTint="#EF0000"
                 android:text="Törlés" />
 

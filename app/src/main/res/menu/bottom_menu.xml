@@ -15,10 +15,5 @@
         android:title="Contact"
         android:icon="@drawable/common_full_open_on_phone"
 />
-    <item
-        android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/profile1"
-        />
 
 </menu>
