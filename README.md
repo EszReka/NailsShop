@@ -1,4 +1,4 @@
-(Ha esetleg éppen Webkeretrendszerekre peerreviewztál, és ezt kaptad akkor kérlek kattints ezekre:
+(Ha esetleg éppen Webkeretrendszerekre peer reviewznál, és ezt kaptad akkor kérlek kattints ezekre:
 https://github.com/EszReka/nail-shop
 https://angularnailshop.web.app/home)
 
